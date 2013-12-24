@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>Munpila Extension Options</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+  </head>
+  <body>
+    <br>
+    <br>
+    <div class="container">
+      <h3>Пути к документам</h3>
+      <div class="row" id="paths"></div>
+      <div class="row">
+        <br>
+        <div class="col-md-2">
+          <button id="save" class="btn btn-default">Сохранить</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script id="paths_tmpl" type="text/x-handlebars-template">
+    <form>
+      {{#each paths}}
+        <div class="form-group path">
+          <div class="col-md-2">
+            <input type="text" class="col-md-2 form-control" data-id="title" value="{{this.title}}" placeholder="Название">
+          </div>
+          <div class="col-md-10">
+            <input type="text" class="col-md-10 form-control" data-id="path" value="{{this.path}}" placeholder="Адрес">
+          </div>
+        </div>
+      {{/each}}
+    </form>
+  </script>
+
+  <script id="one_path_tmpl" type="text/x-handlebars-template">
+    <div class="form-group path">
+          <div class="col-md-2">
+            <input type="text" class="col-md-2 form-control" data-id="title" value="" placeholder="Название">
+          </div>
+          <div class="col-md-10">
+            <input type="text" class="col-md-10 form-control" data-id="path" value="" placeholder="Адрес">
+          </div>
+        </div>
+  </script>
+  <script src="jquery.min.js"></script>
+  <script src="handlebars-v1.2.0.js"></script>
+  <script src="options.js"></script>
+  <script src="bootstrap.min.js"></script>
+</html>

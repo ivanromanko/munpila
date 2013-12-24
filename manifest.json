@@ -11,6 +11,8 @@
             "48": "icon48.png",
             "128": "icon128.png"},
   
+  "options_page": "options.html",
+
   "browser_action": {
     "default_icon": "icon16.png"
   },
@@ -23,5 +25,6 @@
   ],
   "permissions": [
     "https://*/*"
-  ]
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
