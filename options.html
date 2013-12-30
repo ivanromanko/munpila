@@ -8,6 +8,7 @@
     <br>
     <div class="container">
       <h3>Пути к документам</h3>
+      <h5>Введите адрес для подключения документа. Удалите адрес для отключения документа.</h5>
       <div class="row" id="paths"></div>
       <div class="row">
         <br>
@@ -18,29 +19,52 @@
     </div>
   </body>
   <script id="paths_tmpl" type="text/x-handlebars-template">
-    <form>
-      {{#each paths}}
-        <div class="form-group path">
-          <div class="col-md-2">
-            <input type="text" class="col-md-2 form-control" data-id="title" value="{{this.title}}" placeholder="Название">
+    {{#each paths}}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{@key}}</h3>
+      </div>
+      <div class="panel-body">
+        <form data-id="{{@key}}">
+          {{#each this}}
+            <div class="form-group path">
+              <div class="col-md-2">
+                <input type="text" class="col-md-2 form-control" data-id="title" value="{{this.title}}" placeholder="Название">
+              </div>
+              <div class="col-md-8">
+                <input type="text" class="col-md-10 form-control" data-id="path" value="{{this.path}}" placeholder="Адрес (обязательное поле)">
+              </div>
+              <div class="col-md-2">
+                <input type="text" class="col-md-10 form-control" data-id="list_number" value="{{this.list_number}}" placeholder="Номер листа">
+              </div>
+            </div>
+          {{/each}}
+          <div class="form-group path">
+            <div class="col-md-2">
+              <input type="text" class="col-md-2 form-control" data-id="title" value="" placeholder="Название">
+            </div>
+            <div class="col-md-8">
+              <input type="text" class="col-md-10 form-control" data-id="path" value="" placeholder="Адрес (обязательное поле)">
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="col-md-10 form-control" data-id="list_number" value="{{this.list_number}}" placeholder="Номер листа">
+              </div>
           </div>
-          <div class="col-md-10">
-            <input type="text" class="col-md-10 form-control" data-id="path" value="{{this.path}}" placeholder="Адрес">
-          </div>
-        </div>
-      {{/each}}
-    </form>
+        </form>
+      </div>
+    </div>
+    {{/each}}
   </script>
 
   <script id="one_path_tmpl" type="text/x-handlebars-template">
     <div class="form-group path">
-          <div class="col-md-2">
-            <input type="text" class="col-md-2 form-control" data-id="title" value="" placeholder="Название">
-          </div>
-          <div class="col-md-10">
-            <input type="text" class="col-md-10 form-control" data-id="path" value="" placeholder="Адрес">
-          </div>
-        </div>
+      <div class="col-md-2">
+        <input type="text" class="col-md-2 form-control" data-id="title" value="" placeholder="Название">
+      </div>
+      <div class="col-md-10">
+        <input type="text" class="col-md-10 form-control" data-id="path" value="" placeholder="Адрес">
+      </div>
+    </div>
   </script>
   <script src="jquery.min.js"></script>
   <script src="handlebars-v1.2.0.js"></script>

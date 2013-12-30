@@ -5,36 +5,33 @@ $('#save').on('click', function(){
 function load_and_display(){
     var saved_settings = JSON.parse(localStorage.getItem('munpila_settings'));
     if(saved_settings){
-        paths_number = saved_settings.paths.length;
-        if (paths_number){
-            $("div#paths").html(Handlebars.compile($('#paths_tmpl').html())(saved_settings));
-            $("div#paths form").append(Handlebars.compile($('#one_path_tmpl').html())())
-        }
-
+        $("div#paths").html(Handlebars.compile($('#paths_tmpl').html())(saved_settings));
     } else {
-        var fake_data = {paths: [{path:'', title:''}]};
+        var fake_data = {paths: {suspicious:[], examined: [], appealed:[]}};
         $("div#paths").html(Handlebars.compile($('#paths_tmpl').html())(fake_data));
     }
 }
 function save_data(){
-    var data = [];
+    var data = {paths: {suspicious:[], examined:[], appealed:[]}};
     $('div.path').each(function(){
-        var inputs = $(this).find('input');
-        var tmp = {title: inputs.eq(0).val(), path: inputs.eq(1).val()};
-        if (tmp.path.length){
-            data.push(tmp);
+        var inputs = $(this).find('input'),
+            tmp = {title: inputs.eq(0).val(), path: inputs.eq(1).val(), list_number: inputs.eq(2).val()};
+        console.log(tmp);
+        if (tmp.path.length!=''){
+            data.paths[$(this).closest('form').data('id')].push(tmp);
         }
     })
-    if (data.length){
+    // if (data.paths.suspicious.length || data.paths.examined.length || data.paths.appealed.length){
         var current_settings = JSON.parse(localStorage.getItem('munpila_settings'));
         if (current_settings){
-            current_settings.paths = data;
+            current_settings.paths.suspicious = data.paths.suspicious;
+            current_settings.paths.examined = data.paths.examined;
+            current_settings.paths.appealed = data.paths.appealed;
             localStorage.setItem('munpila_settings', JSON.stringify(current_settings));    
         } else {
-            var tmp = {paths: data};
-            localStorage.setItem('munpila_settings', JSON.stringify(tmp));    
+            localStorage.setItem('munpila_settings', JSON.stringify(data));
         }
-    }
+    // }
     load_and_display();
 }
 

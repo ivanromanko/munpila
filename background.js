@@ -1,5 +1,9 @@
 chrome.browserAction.onClicked.addListener(function(){
-
+  var stored_paths = JSON.parse(localStorage.getItem('munpila_settings')).paths;
+  if (!stored_paths.length){
+    alert('Не удалось получить список подключённых документов. Проверьте настройки');
+    return;
+  }
   var sample_url = "https://docs.google.com/spreadsheet/pub?key=0Ar0A-n08O083dDA0UjhYSDJzYUxxcFNvRjQxclJOQkE&output=html",
       NUMBER_OF_LISTS = 18,
       key = sample_url.match(/key=(.*?)&/)[1],
