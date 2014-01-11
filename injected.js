@@ -25,7 +25,7 @@ function highlight(data){
             new_li = $('<li></li>').html('<a></a>').css('background-color',colors[notification_ids_list[order_id]['type']]),
             a_in_li = new_li.find('a').eq(0);
         a_in_li.prop('href', notification_ids_list[order_id]['url']).text(rus_names[notification_ids_list[order_id]['type']]);
-        new_li.html(new_li.html() + ' ' + notification_ids_list[order_id].list_number);
+        // new_li.html(new_li.html() + ' ' + notification_ids_list[order_id].list_number);
         list_of_links.append(new_li);
       }
     }

@@ -16,6 +16,7 @@ chrome.browserAction.onClicked.addListener(function(){
 
       $.each(this.list_numbers, function(i){
         var url = url_template.replace('LIST_NUMBER', this),
+            list_id = this-1,
             request = $.getJSON(url)
               .done(function(data){
                 var response = data,
@@ -26,7 +27,7 @@ chrome.browserAction.onClicked.addListener(function(){
                         link = this.content.$t.match(/notificationId=(\d+)/),
                         notification_id = link ? link[1]: null;
                     if (notification_id){
-                      result.push({title: title, notification_id: notification_id, list_number: list_title, type: key, url: sample_url});
+                      result.push({title: title, notification_id: notification_id, list_number: list_title, type: key, url: sample_url+'&gid='+list_id});
                     }
                   });
                 }
