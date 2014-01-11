@@ -8,7 +8,7 @@
     <br>
     <div class="container">
       <h3>Пути к документам</h3>
-      <h5>Введите адрес для подключения документа. Удалите адрес для отключения документа.</h5>
+      <h5>Введите адрес документа и список листов. Удалите адрес или номера листов для отключения документа.</h5>
       <div class="row" id="paths"></div>
       <div class="row">
         <br>
@@ -31,11 +31,11 @@
               <div class="col-md-2">
                 <input type="text" class="col-md-2 form-control" data-id="title" value="{{this.title}}" placeholder="Название">
               </div>
-              <div class="col-md-8">
-                <input type="text" class="col-md-10 form-control" data-id="path" value="{{this.path}}" placeholder="Адрес (обязательное поле)">
+              <div class="col-md-7">
+                <input type="text" class="col-md-10 form-control" data-id="path" value="{{this.path}}" placeholder="Адрес *">
               </div>
-              <div class="col-md-2">
-                <input type="text" class="col-md-10 form-control" data-id="list_number" value="{{this.list_number}}" placeholder="Номер листа">
+              <div class="col-md-3">
+                <input type="text" class="col-md-10 form-control" data-id="list_number" value="{{this.list_numbers}}" placeholder="Номера листов через запятую *">
               </div>
             </div>
           {{/each}}
@@ -43,11 +43,11 @@
             <div class="col-md-2">
               <input type="text" class="col-md-2 form-control" data-id="title" value="" placeholder="Название">
             </div>
-            <div class="col-md-8">
-              <input type="text" class="col-md-10 form-control" data-id="path" value="" placeholder="Адрес (обязательное поле)">
+            <div class="col-md-7">
+              <input type="text" class="col-md-10 form-control" data-id="path" value="" placeholder="Адрес *">
             </div>
-            <div class="col-md-2">
-                <input type="text" class="col-md-10 form-control" data-id="list_number" value="{{this.list_number}}" placeholder="Номер листа">
+            <div class="col-md-3">
+                <input type="text" class="col-md-10 form-control" data-id="list_number" value="{{this.list_numbers}}" placeholder="Номера листов через запятую *">
               </div>
           </div>
         </form>
